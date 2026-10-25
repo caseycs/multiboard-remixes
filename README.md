@@ -33,8 +33,8 @@ Ready to print, in [`quad-offset-snaps/stl/`](quad-offset-snaps/stl/):
 ## Build
 
 ```
-task                              # render every STL
-task quad-offset-snaps:part PART=2   # one part
+task                               # render every STL
+task quad-offset-snaps:part PART=2 # one part
 ```
 
 Or open `quad-offset-snaps/quad-offset-snaps.scad` and set `part = 1` or `2`.
