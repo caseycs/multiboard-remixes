@@ -1,0 +1,12 @@
+version: '3'
+
+includes:
+  quad-offset-snaps:
+    taskfile: quad-offset-snaps/Taskfile.yml
+    dir: quad-offset-snaps
+
+tasks:
+  default:
+    desc: Render every remix's STLs
+    cmds:
+      - task: quad-offset-snaps:default

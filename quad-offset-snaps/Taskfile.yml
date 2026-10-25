@@ -1,0 +1,27 @@
+version: '3'
+
+vars:
+  OUT: stl
+
+tasks:
+  default:
+    desc: Render both parts to stl/
+    cmds:
+      - for: [1, 2]
+        task: part
+        vars:
+          PART: '{{.ITEM}}'
+
+  part:
+    desc: Render one part to STL, e.g. `task part PART=2`
+    label: 'part-{{.PART}}'   # up-to-date checks are kept per label, so per part
+    vars:
+      PART: '{{.PART | default 1}}'
+      STL: '{{.OUT}}/quad-offset-snaps-part{{.PART}}.stl'
+    sources:
+      - quad-offset-snaps.scad
+    generates:
+      - '{{.STL}}'
+    cmds:
+      - mkdir -p {{.OUT}}
+      - openscad --backend=manifold --export-format binstl -D part={{.PART}} -o {{.STL}} quad-offset-snaps.scad
